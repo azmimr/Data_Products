@@ -9,15 +9,25 @@
 
 library(shiny)
 
-shinyUI(fluidPage(
+shinyUI(fluidPage(theme = "bootstrap.min.css",
     
+    tags$head(
+        tags$style(HTML("
+             @import url('//fonts.googleapis.com/css?family=Lobster|Cabin:400,700');
+        "))
+    ),
+                  
     # Application title
-    titlePanel(title=h1("Data Products Project",align="center")),
+    titlePanel(title=h1("Data Products Project",align="center",
+                        style = "font-family: 'Lobster', cursive;
+                font-weight: 500; line-height: 1.1; 
+               color: #ad1d28;")),
     
     # The application uses a sidebarlayout with user buttons on the left side.
     sidebarLayout(
         
         sidebarPanel(
+            # MODIFY: Change list below for your respective model
             # Multiple checkbox for the list of predictors
             # If no predictors are selected, then lm will throw an error so
             # no special logic to handle this case.
@@ -50,6 +60,7 @@ shinyUI(fluidPage(
         
         # Show a plot of the generated distribution
         mainPanel(
+            # MODIFY: Change this headings so that the text matches the model
             h2("Linear Regression Model for Mileage (miles per gallon)"),
             h3("For Motor Trend Car Road Tests"),
             br(),

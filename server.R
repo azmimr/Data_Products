@@ -10,15 +10,18 @@
 library(shiny)
 
 shinyServer(function(input, output) {
+    # MODIFY: Change the dataset name
     # loads the data
     data(mtcars)
     
+    # MODIFY: Change the dependant variable (from 'mpg')
     # Reactive function to create the formula as a single text string
     getformula <- reactive({
         tmp <- paste("mpg~",paste(input$checkGroup,collapse="+"),sep="")
         print(tmp)
     })
     
+    # MODIFY: Change the dataset name
     # Reactive function to run the lm modelling
     getlm <- reactive({
         # fit is assigned as a global variable
